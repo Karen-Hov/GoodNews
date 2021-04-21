@@ -19,7 +19,7 @@ class PostController extends Controller
         $posts= Post::with(['translate'=>function ($q){
             $q->where('code','hy')->where('type','post');
         },'category.translate'])->get();
-//        dd($posts);
+//        dd($posts[1]);
        return view('admin.posts.index')->with('posts',$posts);
     }
 
@@ -76,9 +76,12 @@ class PostController extends Controller
         $categories = Category::with(['translate'=>function ($q){
             $q->where('code','hy');
         }])->get();
-        $post= Post::find($id);
-//        dd($id,$portfolio);
-        return view('admin.portfolio.edit')->with(['post'=> $post,'categories'=> $categories]);
+
+        $post= Post::with(['translate'=>function ($q){
+            $q->where('code','hy')->where('type','post');
+        },'category.translate'])->find($id);
+//        dd($id,$post);
+        return view('admin.posts.edit')->with(['post'=> $post,'categories'=> $categories]);
     }
 
     /**
@@ -91,6 +94,9 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         Post::updatePost($request,$id);
+        return redirect('/my_admin/posts/')->with('flash_message_success','Հրապարակումը հաջողությամբ խմբագրված է ');
+
+
 
     }
 

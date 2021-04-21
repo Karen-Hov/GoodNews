@@ -16,11 +16,9 @@ class Category extends Model
         return $this->hasMany(Translate::class, 'page_id', 'id')->where('type','category');
     }
 
-
     public function post()
     {
-        return $this->hasMany(Post::class, 'type', 'id');
-    }
+        return $this->hasOne(Post::class);    }
 
 
     public static function storeCategory($request)
@@ -39,9 +37,7 @@ class Category extends Model
     {
         DB::transaction(function() use($request, $category) {
 //            $category->type = $request['cat'];
-
             $category->save();
-//dd($category);
             Translate::storeTranslate($request, $category->id);
         });
 
@@ -55,7 +51,7 @@ class Category extends Model
 //        if(!$category->isEmpty()){
 //            return false;
 //        }else{
-        PortfolioCategory::where('id',$id)->delete();
+        Category::where('id',$id)->delete();
         Translate::where('page_id',$id)->where('type','category')->delete();
         return true;
 //        }
@@ -64,7 +60,7 @@ class Category extends Model
     }
 
     public static function getCategories(){
-        $categories = PortfolioCategory::with(['translate'=>function($q){
+        $categories =Category::with(['translate'=>function($q){
             $q->where('code',app()->getLocale());
         }])->get();
         return $categories;

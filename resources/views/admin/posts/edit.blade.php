@@ -65,15 +65,21 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label>Խմբագրել կատեգորիան *</label>
-
-                                    <select class="select2" multiple="multiple" data-placeholder="Select a State"
-                                            style="width: 100%;" name="cat[]" id="location">
-{{--                                        @foreach($pricings as $item)--}}
-{{--                                            <option value="{{$item->id}}" data-id="{{$item->id}}"--}}
-{{--                                            @if(old('cat')) {{in_array($item->id,old('cat')) ?'selected':''}} @else--}}
-{{--                                                {{in_array($item->id,$selected) ?'selected':''}} @endif--}}
-{{--                                            >{{$item->translate[0]->title}}</option>--}}
-{{--                                        @endforeach--}}
+                                    <select class="select2" data-placeholder="Select a State"
+                                            style="width: 100%;" name="cat" id="location">
+                                        @if($categories)
+                                            @foreach($categories as $item)
+                                                <option value="{{$item->id}}" data-id="{{$item->id}}"
+                                                @if(old('category') == $post->type)
+                                                     {{'selected'}}
+                                                @elseif($item->id == $post->type)
+                                                    {{'selected'}}
+                                                @endif
+                                                >
+                                                    {{$item->translate[0]->title}}
+                                                </option>
+                                            @endforeach
+                                        @endif
                                     </select>
 
                                     <span class="error_message_location valid_error"></span>
@@ -94,7 +100,7 @@
 
                                                 <div class="card-body">
                                                     <div class="form-group">
-                                                        <label>Խմբագրել վերնագիր *</label>
+                                                        <label>Խմբագրել վերնագիրը *</label>
                                                         <input type="text" name="title_{{$lang['code']}}"
                                                                class="form-control" id="input_name_{{$lang['code']}}"
                                                                value="{{isset($post->translate[$loop->index]->title)?$post->translate[$loop->index]->title:old('title_'.$lang['code'])}}">
@@ -104,6 +110,32 @@
                                                         @endif
                                                         <span class="error_message_name_{{$lang['code']}} valid_error"></span>
                                                     </div>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="form-group">
+                                                        <label>Խմբագրել ենթավերնագիրը *</label>
+                                                        <input type="text" name="subtitle_{{$lang['code']}}"
+                                                               class="form-control" id="input_name_{{$lang['code']}}"
+                                                               value="{{isset($post->translate[$loop->index]->subtitle)?$post->translate[$loop->index]->subtitle:old('subtitle_'.$lang['code'])}}">
+                                                        @if ($errors->has('subtitle_'.$lang['code']))
+                                                            <span
+                                                                class="valid-error">{{ $errors->first('subtitle_'.$lang['code']) }}</span>
+                                                        @endif
+                                                        <span class="error_message_name_{{$lang['code']}} valid_error"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="form-group">
+                                                        <label>Խմբագրել նկարագրությունը *</label>
+                                                        <textarea type="text" id="summary-ckeditor_{{$loop->index}}" name="content_{{$lang['code']}}" class="form-control">{{isset($post->translate[$loop->index]->content)?$post->translate[$loop->index]->content:old('content_'.$lang['code'])}}</textarea>
+                                                        @if ($errors->has('content_'.$lang['code']))
+                                                            <span class="valid-error">{{ $errors->first('content_'.$lang['code']) }}</span>
+                                                        @endif
+                                                    </div>
+                                                    <script src="{{ asset('vendor/unisharp/ckeditor/ckeditor.js') }}"></script>
+                                                    <script>
+                                                        CKEDITOR.replace( 'summary-ckeditor_{{$loop->index}}' );
+                                                    </script>
                                                 </div>
 
                                             </div>

@@ -23,7 +23,8 @@ class Post extends Model
 
     public function category()
     {
-        return $this->belongsTo(Category::class,'type','id');
+        return $this->belongsTo(Category::class, 'category', 'id');
+
     }
 
     public static function storePost($request)

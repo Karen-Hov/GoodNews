@@ -38,22 +38,25 @@
                             </tr>
                             </thead>
                             <tbody>
-{{--                            @dd($posts)--}}
+{{--                            @dd($posts[1]->category)--}}
                             @if($posts)
                                 @foreach($posts as $item)
                                     <tr>
                                         <td>{{isset($item->translate[0]->title)?Str::limit($item->translate[0]->title,50):''}} </td>
                                         <td>{{isset($item->translate[0]->subtitle)?Str::limit($item->translate[0]->subtitle,50):''}} </td>
-{{--                                        <td> @foreach($item->category as $cat)--}}
-{{--                                                {{($cat->translate[0]->title) }} <br>--}}
-{{--                                            @endforeach--}}
-{{--                                        </td>--}}
+                                        <td>
+{{--                                            @dd($item)--}}
+                                            {{isset($item->category->translate[0]->title)?Str::limit($item->category->translate[0]->title,50):''}}
+
+{{--                                            {{($cat->translate[0]->title) }} <br>--}}
+
+                                        </td>
 
 
                                         <td class="project-actions text-right">
                                             <a href="{{route('posts.show',$item->id)}}" class="btn btn-success ">Տեսնել</a>
                                             <a href="{{route('posts.edit',$item->id)}}" class="btn btn-success">Կարգավորել</a>
-                                            <a onclick="deleteProducts(this,'{{ url('/my_admin/posts/'.$item->id) }}', 'DELETE')"
+                                            <a onclick="deletePost(this,'{{ url('/my_admin/posts/'.$item->id) }}', 'DELETE')"
                                                class="btn btn-danger ">Ջնջել</a>
                                             </td>
 
@@ -88,7 +91,7 @@
 
     <script>
 
-        function deleteProducts(target, url, method) {
+        function deletePost(target, url, method) {
             let element = $(target).parents('tr');
             if (confirm("Do you really want to delete?!!!")) {
                 $.ajax({

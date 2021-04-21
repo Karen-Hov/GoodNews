@@ -4,7 +4,6 @@
 {{--    </div></a>--}}
 
 
-
     <!-- preloader Start -->
     <div id="preloader">
         <div id="status_1">
@@ -121,19 +120,7 @@
                             <div class="searchd"><i class="fa fa-search"></i>
                             </div>
                             <ul class="dl-menu">
-                                <li class="parent"><a href="{{asset('/')}}" class="effect_nav">home</a>
-{{--                                    <ul class="lg-submenu">--}}
-{{--                                        <li><a href="index.html">Home-I</a></li>--}}
-{{--                                        <li><a href="index_II.html">Home-II</a>--}}
-{{--                                        </li>--}}
-{{--                                        <li><a href="index_III.html">Home-III</a>--}}
-{{--                                        </li>--}}
-{{--                                        <li><a href="index_IV.html">Home-IV</a>--}}
-{{--                                        </li>--}}
-{{--                                        <li><a href="index_dark.html">Home-V</a>--}}
-{{--                                        </li>--}}
-{{--                                    </ul>--}}
-                                </li>
+                                <li class="parent megamenu"><a href="{{asset('/')}}" class="effect_nav">home</a></li>
                                 <li class="parent megamenu"><a href="#" class="effect_nav">features</a>
                                     <ul class="lg-submenu">
                                         <li><a>Post Samples</a>
