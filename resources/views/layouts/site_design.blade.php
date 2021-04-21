@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"  initial-scale = 2.3, user-scalable = no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="mobile-web-app-capable" content="yes">
-    <title>News</title>
+    <title>GoodNews</title>
 {{--    <link rel="shortcut icon" href="{{asset('site/img/itlogo.png')}}" type="image/x-icon">--}}
     @include('layouts.SiteLayouts.styles')
     @yield('styles')
@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('front/css/style.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('front/css/responsive.css')}}">
     <!-- favicon links -->
-    <link rel="shortcut icon" type="image/png" href="{{asset('front/images/header/favicon.ico')}}">
+{{--    <link rel="shortcut icon" type="image/png" href="{{asset('front/images/header/favicon.ico')}}">--}}
 {{--    <script src='../../../google_analytics_auto.js'></script>--}}
 
 

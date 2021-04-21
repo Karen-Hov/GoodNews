@@ -54,6 +54,14 @@ Route::group(['prefix' => '{locale}', 'middleware' => 'lang', 'as'=> 'site'], fu
 
     Route::get('/', [HomeController::class,'index']);
     Route::get('/blog', [HomeController::class,'blog']);
+    Route::get('/blog_single', [HomeController::class,'blog_single']);
+    Route::get('/contact', [HomeController::class,'contact']);
+    Route::get('/sport', [HomeController::class,'sport']);
+    Route::get('/author', [HomeController::class,'author']);
+    Route::get('/gallery', [HomeController::class,'gallery']);
+    Route::get('/gallery_singl', [HomeController::class,'gallery_singl']);
+    Route::get('/technology', [HomeController::class,'technology']);
+    Route::get('/life_style', [HomeController::class,'life_style']);
 
 
 });

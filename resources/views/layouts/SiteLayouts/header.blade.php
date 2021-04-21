@@ -1,7 +1,7 @@
 <header>
-    <a href="{{asset(App::getLocale())}}"> <div class="logo">
-       <img src="{{asset('site/img/itlogo.png')}}" alt="">
-    </div></a>
+{{--    <a href="{{asset(App::getLocale())}}"> <div class="logo">--}}
+{{--       <img src="{{asset('site/img/itlogo.png')}}" alt="">--}}
+{{--    </div></a>--}}
 
 
 
@@ -17,7 +17,7 @@
                 <div id="day_and_time">
                     <p id="date"></p>
                 </div>
-                <div class="ne_top_about_btn hidden-xs"> <a href="contact.html">contact us</a></div>
+                <div class="ne_top_about_btn hidden-xs"> <a href="{{asset(app()->getLocale().'/contact')}}">contact us</a></div>
             </div>
             <div class="ne_right_sec_main_wrapper">
                 <ul>
@@ -106,7 +106,7 @@
             </div>
             <div class="prs_navi_left_main_wrapper">
                 <div class="prs_logo_main_wrapper">
-                    <a href="index.html">
+                    <a href="{{asset('/')}}">
                         <img src="{{asset('front/images/header/logo.png')}}" alt="logo" class="img-responsive hidden-xs">
                         <img src="{{asset('front/images/header/logo.png')}}" alt="logo" class="visible-xs">
                     </a>
@@ -121,19 +121,18 @@
                             <div class="searchd"><i class="fa fa-search"></i>
                             </div>
                             <ul class="dl-menu">
-                                <li class="parent"><a href="#" class="effect_nav">home</a>
-                                    <ul class="lg-submenu">
-                                        <li><a href="index.html">Home-I</a>
-                                        </li>
-                                        <li><a href="index_II.html">Home-II</a>
-                                        </li>
-                                        <li><a href="index_III.html">Home-III</a>
-                                        </li>
-                                        <li><a href="index_IV.html">Home-IV</a>
-                                        </li>
-                                        <li><a href="index_dark.html">Home-V</a>
-                                        </li>
-                                    </ul>
+                                <li class="parent"><a href="{{asset('/')}}" class="effect_nav">home</a>
+{{--                                    <ul class="lg-submenu">--}}
+{{--                                        <li><a href="index.html">Home-I</a></li>--}}
+{{--                                        <li><a href="index_II.html">Home-II</a>--}}
+{{--                                        </li>--}}
+{{--                                        <li><a href="index_III.html">Home-III</a>--}}
+{{--                                        </li>--}}
+{{--                                        <li><a href="index_IV.html">Home-IV</a>--}}
+{{--                                        </li>--}}
+{{--                                        <li><a href="index_dark.html">Home-V</a>--}}
+{{--                                        </li>--}}
+{{--                                    </ul>--}}
                                 </li>
                                 <li class="parent megamenu"><a href="#" class="effect_nav">features</a>
                                     <ul class="lg-submenu">
@@ -221,7 +220,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="parent megamenu"><a href="#" class="effect_nav"> sport </a>
+                                <li class="parent megamenu"><a href="{{asset(app()->getLocale().'/sport')}}" class="effect_nav"> sport </a>
                                     <ul class="lg-submenu prs_navi_video_wrapper">
                                         <li class=" prs_vp_hover_overlay">
                                             <div class="ne_re_left_top_main_wrapper">
@@ -363,29 +362,29 @@
                                     <ul class="lg-submenu">
                                         <li class="parent"><a href="#">Blog</a>
                                             <ul class="lg-submenu">
-                                                <li><a href="blog.html">Blog-Category</a>
+                                                <li><a href="{{asset(app()->getLocale().'/blog')}}">Blog-Category</a>
                                                 </li>
-                                                <li><a href="blog_single.html">Blog-Single</a>
+                                                <li><a href="{{asset(app()->getLocale().'/blog_single')}}">Blog-Single</a>
                                                 </li>
                                             </ul>
                                         </li>
                                         <li class="parent"><a href="#">Gallery</a>
                                             <ul class="lg-submenu">
-                                                <li><a href="gallery.html">Gallery</a>
+                                                <li><a href="{{asset(app()->getLocale().'/gallery')}}">Gallery</a>
                                                 </li>
-                                                <li><a href="gallery_single.html">Gallery-Single</a>
+                                                <li><a href="{{asset(app()->getLocale().'/gallery_single')}}">Gallery-Single</a>
                                                 </li>
                                             </ul>
                                         </li>
-                                        <li><a href="404.html">404_error</a>
+                                        <li><a href="{{asset(app()->getLocale().'/404')}}">404_error</a>
                                         </li>
-                                        <li><a href="life_style.html">Life-Style</a>
+                                        <li><a href="{{asset(app()->getLocale().'/life_style')}}">Life-Style</a>
                                         </li>
-                                        <li><a href="sport.html">Sport</a>
+                                        <li><a href="{{asset(app()->getLocale().'/sport')}}">Sport</a>
                                         </li>
-                                        <li><a href="technology.html">Technology</a>
+                                        <li><a href="{{asset(app()->getLocale().'/technology')}}">Technology</a>
                                         </li>
-                                        <li><a href="author.html">Author</a>
+                                        <li><a href="{{asset(app()->getLocale().'/author')}}">Author</a>
                                         </li>
                                         <li><a href="login.html">Login</a>
                                         </li>
@@ -393,7 +392,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="parent"><a href="contact.html" class="effect_nav">Contact</a>
+                                <li class="parent"><a href="{{asset(app()->getLocale().'/contact')}}" class="effect_nav">Contact</a>
                                 </li>
                             </ul>
                         </div>
