@@ -20,21 +20,15 @@ class Post extends Model
     {
         return $this->hasMany(Translate::class, 'page_id', 'id')->where('type','post');
     }
-
     public function categorys()
     {
         return $this->hasMany(SubMenu::class ,'id','category');
-
-//        return $this->belongsTo(Category::class, 'category', 'id');
-
     }
-
     public static function storePost($request)
     {
         $posts = new self();
         return self::savePost($request, $posts);
     }
-
     public static function updatePost($request, $id)
     {
         $posts = self::find($id);
@@ -46,7 +40,6 @@ class Post extends Model
         }
         return self::savePost($request, $posts);
     }
-
     public static function savePost($request, $posts)
     {
 //        dd($request->all(),$request->hasFile('file'));
@@ -56,13 +49,11 @@ class Post extends Model
                 if ($image_tmp->isValid()) {
                     $extension = $image_tmp->getClientOriginalExtension();
                     $filename = time() . '.' . $extension;
-
                     $pathRep = $image_tmp->storeAs('public/posts/', $filename);
                     $pathRep = $image_tmp->storeAs('public/posts/large/', $filename);
                     $pathRep = $image_tmp->storeAs('public/posts/medium/', $filename);
                     $pathRep = $image_tmp->storeAs('public/posts/small/', $filename);
                     $posts->file = $filename;
-
                     if ($request->x) {
                         $imagecrop = $request->x;  // your base64 encoded
                         $imagecrop = str_replace('data:image/png;base64,', '', $imagecrop);
@@ -86,25 +77,19 @@ class Post extends Model
                             $constraint->aspectRatio();
                         })->save(Self::$small_image_path. $filename);
                     }
-
                     $posts->file = $filename;
                 }
             }
-
             if ($request->hasFile('file_logo')) {
                 $image_tmp = $request['file_logo'];
                 if ($image_tmp->isValid()) {
                     $extension = $image_tmp->getClientOriginalExtension();
                     $file_logo = time() . '.' . $extension;
-
                     $pathRep = $image_tmp->storeAs('public/posts/', $file_logo);
                     $pathRep = $image_tmp->storeAs('public/posts/large/', $file_logo);
                     $pathRep = $image_tmp->storeAs('public/posts/medium/', $file_logo);
                     $pathRep = $image_tmp->storeAs('public/posts/small/', $file_logo);
                     $posts->file_logo = $file_logo;
-
-
-
                     $posts->file_logo = $file_logo;
                 }
             }
@@ -113,7 +98,6 @@ class Post extends Model
 //            }
             $posts->category =  $request['cat'];
             $posts->link =  $request['link'];
-//            dd($posts);
             $posts->save();
             Translate::storeTranslate($request, $posts->id);
         });
@@ -132,9 +116,7 @@ class Post extends Model
             unlink(public_path('storage/posts/medium/'.$posts->file));
             unlink(public_path('storage/posts/large/'.$posts->file));
         }
-
         return true;
-
     }
 
 //    public static function getPosts(){

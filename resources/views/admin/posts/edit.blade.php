@@ -134,6 +134,18 @@
                                     </div>
                                 @endforeach
                                     <div class="card-body">
+                                        <div class="form-group">
+                                            <label>Խմբագրել վերնագիրը *</label>
+                                            <input type="text" name="link" class="form-control" id="input_link"
+                                                   value="{{isset($post->link)?$post->link:old('link')}}">
+                                            @if ($errors->has('link'))
+                                                <span class="valid-error">{{ $errors->first('link') }}</span>
+                                            @endif
+                                            <span class="error_message_link valid_error"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="card-body">
                                         <label for="exampleInputFile">Նկար *</label>
                                         <div class="input-group">
                                             <div class="custom-file">
