@@ -135,7 +135,7 @@
                                 @endforeach
                                     <div class="card-body">
                                         <div class="form-group">
-                                            <label>Խմբագրել վերնագիրը *</label>
+                                            <label>Խմբագրել Նյութի աղբյուրը *</label>
                                             <input type="text" name="link" class="form-control" id="input_link"
                                                    value="{{isset($post->link)?$post->link:old('link')}}">
                                             @if ($errors->has('link'))

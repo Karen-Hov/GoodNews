@@ -20,10 +20,12 @@ class Post extends Model
     {
         return $this->hasMany(Translate::class, 'page_id', 'id')->where('type','post');
     }
+
     public function categorys()
     {
         return $this->hasMany(SubMenu::class ,'id','category');
     }
+
     public static function storePost($request)
     {
         $posts = new self();

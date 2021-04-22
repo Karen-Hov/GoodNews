@@ -22,7 +22,13 @@ class SubMenu extends Model
     }
 
     public function menu(){
+
         return $this->hasMany(Menu::class ,'id','menu_id');
+    }
+
+    public function menus(){
+        return $this->belongsTo(Menu::class,'id','menu_id');
+
     }
 
 

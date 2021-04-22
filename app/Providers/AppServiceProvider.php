@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Category;
+use App\Models\Menu;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -24,10 +25,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-       $category = Category::with(['translate'=>function ($q){
-           $q->where('code',app()->getLocale())->where('type','category');
+       $category = Menu::with(['translate'=>function ($q){
+           $q->where('code',app()->getLocale())->where('type','menu');
+       },'submenu.translate'=>function ($q){
+           $q->where('code',app()->getLocale())->where('type','submenu');
        }])->get();
-
         view()->share('category', $category);
     }
 }

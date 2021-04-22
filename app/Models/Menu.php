@@ -18,10 +18,14 @@ class Menu extends Model
     public function post(){
         return $this->belongsTo('App/Post');
     }
+
+
     public function submenu()
     {
-        return $this->belongsTo(Menu::class);
+        return $this->hasMany(SubMenu::class);
     }
+
+
 
 
     public static function storeMenu($request)

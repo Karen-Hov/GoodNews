@@ -1,20 +1,20 @@
 /*-------------------------------------
-    
-	Author: Webstrot 
+
+	Author: Webstrot
 	Copyright © 2019
-	
+
 ---------------------------------------
-    
+
     CSS INDEX
     ===================
-	
+
     1. BODY
 	2. CUSTOM CSS / A
 	3. PRELOADER
 	4. ne_top_header_main_wrapper
 	5. ne_ts_main_section_wrapper
 	6. ss_addver_slider_wrapper
-	7. ne_recent_news_main_wrapper 
+	7. ne_recent_news_main_wrapper
 	8. ne_busness_main_slider_wrapper
 	9. neww_businees_slider_wrapper
 	10. ne_sport_slider_wrapper
@@ -106,7 +106,7 @@ ul{
 .ne_top_header_main_wrapper{
 	float:left;
 	width:100%;
-	background:#eb4e4e;
+	background:#7f878e;
 	height:59px;
 	border-bottom:1px solid rgba(255, 255, 255, 0.36);
 	  -webkit-transition: all 0.5s;
@@ -139,7 +139,7 @@ ul{
 .ne_top_about_btn{
 	float:left;
 	width:auto;
-	    
+
 }
 .ne_top_about_btn a{
 	font-size:14px;
@@ -448,7 +448,7 @@ body.active #mobile-nav {
 .prs_navigation_main_wrapper{
 	float:left;
 	width:100%;
-	background:#eb4e4e;
+	background:#7f878e;
 }
 .menu_fixed{
 	position:fixed;
@@ -496,9 +496,9 @@ body.active #mobile-nav {
 }
 .dl-menuwrapper button { background: #dd3333;    -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
-    border-radius: 10px; 
+    border-radius: 10px;
 	margin-right:10px;}
-.dl-menuwrapper ul { background: #eb4e4e; }
+.dl-menuwrapper ul { background: #7f878e; }
 .dl-menuwrapper button.dl-active,.dl-menuwrapper button:hover{
 	background:#dd3333;
 }
@@ -521,7 +521,7 @@ body.active #mobile-nav {
 	z-index: 9999;
 }
 .dl-trigger-wrapper { position: relative; }
-.dl-menuwrapper button { float: right; 
+.dl-menuwrapper button { float: right;
 bottom:-9px !important;}
 ul.navbar-nav {
 	float: right;
@@ -707,7 +707,7 @@ a.navbar-brand img { padding-right: 15px; }
 	left: 0;
 	top: 100%;
 	min-width: 215px;
-	background: #eb4e4e;
+	background: #7f878e;
     border-top: 1px solid #fff;
 	visibility: hidden;
 	opacity: 0;
@@ -1286,7 +1286,7 @@ width:100%;
 	position:absolute;
 	top:45%;
 	float:left;
-	width:100%;	
+	width:100%;
 }
 .carousel-nevigation > .prev{
 	left:-138px;
@@ -1348,7 +1348,7 @@ width:100%;
     -ms-transition: all 0.5s;
     -moz-transition: all 0.5s;
     transition: all 0.5s;
-} 
+}
 .lr_thumbs_slide{
 	float:left;
 	width:100%;
@@ -1376,7 +1376,7 @@ width:100%;
     position: absolute;
     right: -20px;
     bottom: 0;
-	
+
 }
 .lr_banner_content_inner_wrapper h2:before{
 	content: '';
@@ -1385,7 +1385,7 @@ width:100%;
     position: absolute;
     right: -20px;
     bottom: 15px;
-	
+
 }
 .lr_banner_content_inner_wrapper h3{
 	font-size:30px;
@@ -1785,7 +1785,7 @@ width:100%;
     position: absolute;
     right: -20px;
     bottom: 0;
-	
+
 }
 .ne_re_left_img_main_wrapper h2:before{
 	content: '';
@@ -1794,7 +1794,7 @@ width:100%;
     position: absolute;
     right: -20px;
     bottom: 15px;
-	
+
 }
 .ne_re_left_bottom_main_wrapper{
 	float:left;
@@ -2370,7 +2370,7 @@ width:100%;
     position: absolute;
     right: -20px;
     bottom: 0;
-	
+
 }
 .ne_gt_left_img_main_wrapper h2:before{
 	content: '';
@@ -2379,7 +2379,7 @@ width:100%;
     position: absolute;
     right: -20px;
     bottom: 15px;
-	
+
 }
 .ne_gt_left_top_main_wrapper1{
 	margin-top:60px;
@@ -2428,7 +2428,7 @@ width:100%;
 }
 .pagination > li a i:before{
 	margin-left:0;
-} 
+}
 .pagination > li:last-child > a{
 	width:30px;
 	height:30px;
@@ -2442,7 +2442,7 @@ width:100%;
     border-radius: 3px;
 	font-size: 16px;
     line-height: 27px;
-}	
+}
 .pagination > li:first-child:hover > a{
 	background:#eb4e4e;
 	border:1px solid transparent;
@@ -2574,7 +2574,7 @@ width:100%;
     position: absolute;
     right: -20px;
     bottom: 0;
-	
+
 }
 .ne_wn_img_main_wrapper h2:before{
 	content: '';
@@ -2583,7 +2583,7 @@ width:100%;
     position: absolute;
     right: -20px;
     bottom: 15px;
-	
+
 }
 .ne_wn_social_inner_wrapper h3{
 	font-size:22px;
@@ -4003,7 +4003,7 @@ width:100%;
 	float:left;
 }
 #filter li a{
-	padding: 15px 20px;	
+	padding: 15px 20px;
 }
 #filter li:last-child a{
 	padding-right:0;
@@ -4163,8 +4163,8 @@ width:100%;
 	margin-top:80px;
 }
 #map{
-	width:100%; 
-	float:left; 
+	width:100%;
+	float:left;
 	height:560px;
 }
 .ne_map_content_wrapper{
@@ -4396,7 +4396,7 @@ width:100%;
     -o-transition: all 0.5s;
     -ms-transition: all 0.5s;
     -moz-transition: all 0.5s;
-    transition: all 0.5s;	
+    transition: all 0.5s;
 }
 .ne_contact_map_slider_wrapper{
 	margin-top:60px;
@@ -5194,7 +5194,7 @@ width:100%;
 .login_wrapper .form-control:focus {
 	color: #999;
 	background-color: fafafa;
-	border: 1px solid #eb4e4e  !important;	
+	border: 1px solid #eb4e4e  !important;
 }
 .login_wrapper  .formsix-pos,.formsix-e{
 	position: relative;
