@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\SubMenuController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\HomeController as HomeAdminController;
@@ -35,7 +37,8 @@ Route::prefix('my_admin')->middleware('auth')->group(function () {
     Route::resources([
         'posts' => PostController::class,
         'about_us' => PostController::class,
-        'categories' =>CategoryController::class,
+        'menu' =>MenuController::class,
+        'submenu' =>SubMenuController::class,
 
 
 //        'contact_us' => ContactAdminController::class,

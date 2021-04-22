@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\SubMenu;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -18,7 +19,7 @@ class PostController extends Controller
     {
         $posts= Post::with(['translate'=>function ($q){
             $q->where('code','hy')->where('type','post');
-        },'category.translate'])->get();
+        },'categorys.translate'])->get();
 //        dd($posts[1]);
        return view('admin.posts.index')->with('posts',$posts);
     }
@@ -30,8 +31,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        $categories = Category::with(['translate'=>function ($q){
-            $q->where('code','hy')->where('type','category');
+        $categories = SubMenu::with(['translate'=>function ($q){
+            $q->where('code','hy')->where('type','submenu');
         }])->get();
 
         return view('admin.posts.create')->with(['categories'=>$categories]);
@@ -61,7 +62,6 @@ class PostController extends Controller
         $post= Post::with(['translate'=>function ($q){
             $q->where('code','hy')->where('type','post');
         }])->find($id);
-//        dd($posts);
         return view('admin.posts.show')->with('post',$post);
     }
 
@@ -73,13 +73,13 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        $categories = Category::with(['translate'=>function ($q){
+        $categories = SubMenu::with(['translate'=>function ($q){
             $q->where('code','hy');
         }])->get();
 
         $post= Post::with(['translate'=>function ($q){
-            $q->where('code','hy')->where('type','post');
-        },'category.translate'])->find($id);
+            $q->where('type','post');
+        },'categorys.translate'])->find($id);
 //        dd($id,$post);
         return view('admin.posts.edit')->with(['post'=> $post,'categories'=> $categories]);
     }
@@ -95,9 +95,6 @@ class PostController extends Controller
     {
         Post::updatePost($request,$id);
         return redirect('/my_admin/posts/')->with('flash_message_success','Հրապարակումը հաջողությամբ խմբագրված է ');
-
-
-
     }
 
     /**

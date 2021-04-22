@@ -6,7 +6,7 @@
 @endsection
 
 @section('content')
-    <div id="breadcrumb"><a href="{{url('my_admin/')}}">Գլխավոր </a>/ <a href="{{url('my_admin/categories/')}}">Կատեգորիա </a> / <a href="#">Խմբագրել  </a></div>
+    <div id="breadcrumb"><a href="{{url('my_admin/')}}">Գլխավոր </a>/ <a href="{{url('my_admin/menu/')}}">Մենու </a> / <a href="#">Խմբագրել  </a></div>
 
     <section class="content">
         <div class="row">
@@ -45,13 +45,13 @@
                                 </ul>
                             </div>
                         @endif
-                        <form class="form-horizontal" method="post" action="{{route('categories.update',['category'=>$categories->id])}}">
+                        <form class="form-horizontal" method="post" action="{{route('menu.update',['menu'=>$menu->id])}}">
                             @csrf
                             @method('PUT')
 
                     <div class="tab-content" id="custom-tabs-three-tabContent">
                         @foreach(config('lang') as $lang)
-                                @foreach($categories->translate as $item)
+                                @foreach($menu->translate as $item)
                                 @if($lang['code'] == $item['code'])
 
 
@@ -77,7 +77,7 @@
                         @endforeach
                     </div>
                         {{--                            </div>--}}
-                            <input type="hidden" name="translate" value="category">
+                            <input type="hidden" name="translate" value="menu">
                         <div class="card-body">
                             <button type="submit" class="btn btn-primary">
                                 Խմբագրել

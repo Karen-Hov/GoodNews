@@ -21,9 +21,11 @@ class Post extends Model
         return $this->hasMany(Translate::class, 'page_id', 'id')->where('type','post');
     }
 
-    public function category()
+    public function categorys()
     {
-        return $this->belongsTo(Category::class, 'category', 'id');
+        return $this->hasMany(SubMenu::class ,'id','category');
+
+//        return $this->belongsTo(Category::class, 'category', 'id');
 
     }
 
@@ -115,8 +117,6 @@ class Post extends Model
             $posts->save();
             Translate::storeTranslate($request, $posts->id);
         });
-
-
         return $posts;
 
 

@@ -10,15 +10,16 @@ class Category extends Model
 {
     use HasFactory;
     protected $table = 'categories';
+    protected $fillable = ['*'];
 
     public function translate()
     {
         return $this->hasMany(Translate::class, 'page_id', 'id')->where('type','category');
     }
 
-    public function post()
-    {
-        return $this->hasOne(Post::class);    }
+    public function post(){
+        return $this->belongsTo('App/Post');
+    }
 
 
     public static function storeCategory($request)

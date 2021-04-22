@@ -31,11 +31,11 @@
                     {{--                    </div>--}}
 
                 </div>
-                <div class="bigImage">
-                    @if($post->file)
-                        <img src="{{asset('storage/posts/large/'.$post->file)}}" alt="">
-                    @endif
-                </div>
+{{--                <div class="bigImage">--}}
+{{--                    @if($post->file)--}}
+{{--                        <img src="{{asset('storage/posts/large/'.$post->file)}}" alt="">--}}
+{{--                    @endif--}}
+{{--                </div>--}}
             </div>
 
             {{--        @dd($item->productTs[0]->description)--}}

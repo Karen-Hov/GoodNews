@@ -120,7 +120,100 @@
                             <div class="searchd"><i class="fa fa-search"></i>
                             </div>
                             <ul class="dl-menu">
-                                <li class="parent megamenu"><a href="{{asset('/')}}" class="effect_nav">home</a></li>
+                                <li class="parent megamenu"><a href="{{asset('/')}}" class="effect_nav">Գլխավոր</a></li>
+
+{{--                                @if(!$category->isEmpty())--}}
+{{--                                @foreach($category as $cat)--}}
+{{--                                        @dd($cat->translate[0]->title)--}}
+{{--                                        <li class="parent megamenu"><a href="#" class="effect_nav">{{$cat->translate[0]->title}}</a>--}}
+{{--                                            <ul class="lg-submenu">--}}
+{{--                                                <li><a>Post Samples</a>--}}
+{{--                                                    <ul class="lg-submenu">--}}
+{{--                                                        <li class="ar_left"><i class="fa fa-newspaper-o hidden-xs"></i><a href="#">Parallax</a>--}}
+{{--                                                        </li>--}}
+{{--                                                        <li class="ar_left"><i class="fa fa-newspaper-o hidden-xs"></i><a href="#">Lightbox </a>--}}
+{{--                                                        </li>--}}
+{{--                                                        <li class="ar_left"><i class="fa fa-newspaper-o hidden-xs"></i><a href="#">Images </a>--}}
+{{--                                                        </li>--}}
+{{--                                                        <li class="ar_left"><i class="fa fa-newspaper-o hidden-xs"></i><a href="#">Video Post</a>--}}
+{{--                                                        </li>--}}
+{{--                                                        <li class="ar_left"><i class="fa fa-newspaper-o hidden-xs"></i><a href="#">Self Hosted </a>--}}
+{{--                                                        </li>--}}
+{{--                                                        <li class="ar_left"><i class="fa fa-newspaper-o hidden-xs"></i><a href="#">Self Hosted </a>--}}
+{{--                                                        </li>--}}
+{{--                                                        <li class="ar_left"><i class="fa fa-newspaper-o hidden-xs"></i><a href="#">SoundCloud</a>--}}
+{{--                                                        </li>--}}
+{{--                                                        <li class="ar_left"><i class="fa fa-newspaper-o hidden-xs"></i><a href="#">Google Map</a>--}}
+{{--                                                        </li>--}}
+{{--                                                    </ul>--}}
+{{--                                                </li>--}}
+{{--                                                <li><a>Reviews</a>--}}
+{{--                                                    <ul class="lg-submenu">--}}
+{{--                                                        <li class="ar_left"><i class="fa fa-newspaper-o hidden-xs"></i><a href="#">Stars</a>--}}
+{{--                                                        </li>--}}
+{{--                                                        <li class="ar_left"><i class="fa fa-newspaper-o hidden-xs"></i><a href="#">Points</a>--}}
+{{--                                                        </li>--}}
+{{--                                                        <li class="ar_left"><i class="fa fa-newspaper-o hidden-xs"></i><a href="#">Percent</a>--}}
+{{--                                                        </li>--}}
+{{--                                                        <li class="ar_left"><i class="fa fa-newspaper-o hidden-xs"></i><a href="#">Position</a>--}}
+{{--                                                        </li>--}}
+{{--                                                        <li class="ar_left"><i class="fa fa-newspaper-o hidden-xs"></i><a href="#">Position post</a>--}}
+{{--                                                        </li>--}}
+{{--                                                        <li class="ar_left"><i class="fa fa-newspaper-o hidden-xs"></i><a href="#">Position Custom</a>--}}
+{{--                                                        </li>--}}
+{{--                                                        <li class="ar_left"><i class="fa fa-newspaper-o hidden-xs"></i><a href="#">Best Reviews</a>--}}
+{{--                                                        </li>--}}
+{{--                                                    </ul>--}}
+{{--                                                </li>--}}
+{{--                                                <li><a>Shortcodes</a>--}}
+{{--                                                    <ul class="lg-submenu">--}}
+{{--                                                        <li class="ar_left"><i class="fa fa-newspaper-o hidden-xs"></i><a href="#">Boxes</a>--}}
+{{--                                                        </li>--}}
+{{--                                                        <li class="ar_left"><i class="fa fa-newspaper-o hidden-xs"></i><a href="#">Buttons</a>--}}
+{{--                                                        </li>--}}
+{{--                                                        <li class="ar_left"><i class="fa fa-newspaper-o hidden-xs"></i><a href="#">Columns</a>--}}
+{{--                                                        </li>--}}
+{{--                                                        <li class="ar_left"><i class="fa fa-newspaper-o hidden-xs"></i><a href="#">Social  </a>--}}
+{{--                                                        </li>--}}
+{{--                                                        <li class="ar_left"><i class="fa fa-newspaper-o hidden-xs"></i><a href="#">Tabs </a>--}}
+{{--                                                        </li>--}}
+{{--                                                        <li class="ar_left"><i class="fa fa-newspaper-o hidden-xs"></i><a href="#">Text Lists </a>--}}
+{{--                                                        </li>--}}
+{{--                                                        <li class="ar_left"><i class="fa fa-newspaper-o hidden-xs"></i><a href="#">Lightbox</a>--}}
+{{--                                                        </li>--}}
+{{--                                                        <li class="ar_left"><i class="fa fa-newspaper-o hidden-xs"></i><a href="#">Content </a>--}}
+{{--                                                        </li>--}}
+{{--                                                        <li class="ar_left"><i class="fa fa-newspaper-o hidden-xs"></i><a href="#">Audio and Video</a>--}}
+{{--                                                        </li>--}}
+{{--                                                    </ul>--}}
+{{--                                                </li>--}}
+{{--                                                <li><a>Page Templates</a>--}}
+{{--                                                    <ul class="lg-submenu">--}}
+{{--                                                        <li class="ar_left"><i class="fa fa-newspaper-o hidden-xs"></i><a href="#">Masonry </a>--}}
+{{--                                                        </li>--}}
+{{--                                                        <li class="ar_left"><i class="fa fa-newspaper-o hidden-xs"></i><a href="#">Media </a>--}}
+{{--                                                        </li>--}}
+{{--                                                        <li class="ar_left"><i class="fa fa-newspaper-o hidden-xs"></i><a href="#">Authors</a>--}}
+{{--                                                        </li>--}}
+{{--                                                        <li class="ar_left"><i class="fa fa-newspaper-o hidden-xs"></i><a href="#">Blog List </a>--}}
+{{--                                                        </li>--}}
+{{--                                                        <li class="ar_left"><i class="fa fa-newspaper-o hidden-xs"></i><a href="#">Best Reviews</a>--}}
+{{--                                                        </li>--}}
+{{--                                                        <li class="ar_left"><i class="fa fa-newspaper-o hidden-xs"></i><a href="#">Login Page </a>--}}
+{{--                                                        </li>--}}
+{{--                                                        <li class="ar_left"><i class="fa fa-newspaper-o hidden-xs"></i><a href="#">Sitemap Page</a>--}}
+{{--                                                        </li>--}}
+{{--                                                        <li class="ar_left"><i class="fa fa-newspaper-o hidden-xs"></i><a href="#">Tags</a>--}}
+{{--                                                        </li>--}}
+{{--                                                        <li class="ar_left"><i class="fa fa-newspaper-o hidden-xs"></i><a href="#">Timeline page</a>--}}
+{{--                                                        </li>--}}
+{{--                                                    </ul>--}}
+{{--                                                </li>--}}
+{{--                                            </ul>--}}
+{{--                                        </li>--}}
+
+{{--                                    @endforeach--}}
+{{--                                @endif--}}
                                 <li class="parent megamenu"><a href="#" class="effect_nav">features</a>
                                     <ul class="lg-submenu">
                                         <li><a>Post Samples</a>

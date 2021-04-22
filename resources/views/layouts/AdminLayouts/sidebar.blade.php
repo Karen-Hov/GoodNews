@@ -56,16 +56,43 @@
 {{--                        </p>--}}
 {{--                    </a>--}}
 {{--                </li>--}}
-
-                <li class="nav-item">
-                    <a href="{{route('categories.index')}}"
-                       class="nav-link  @if(strpos(url()->current(),'categories')!== false)) active @endif">
-                        <i class="nav-icon fas fa-edit"></i>
-                        <p>
-                            Կատեգորիաններ
+                <li class="nav-item has-treeview  @if(strpos(url()->current(),'menu')!=false) active menu-open @endif ">
+                    <a href="" class="nav-link">
+                        <i class="nav-icon fas fa-th"></i>                        <p>
+                            Մենու
+                            <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
+{{--                                        @dd(Route::currentRouteName())--}}
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('menu.index')}}"
+                               class="nav-link  @if(strpos(url()->current(),'my_admin/menu')!== false)) active @endif">
+                                <i class="nav-icon fas fa-edit"></i>
+                                <p>
+                                    Մենու
+                                </p>
+                            </a>
+                        </li>
+
+                    </ul>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('submenu.index')}}"
+                               class="nav-link  @if(strpos(url()->current(),'submenu')!== false)) active @endif">
+                                <i class="nav-icon fas fa-edit"></i>
+                                <p>
+                                    Ենթամենու
+                                </p>
+                            </a>
+                        </li>
+
+                    </ul>
                 </li>
+
+
+
+
 {{--                <li class="nav-item">--}}
 {{--                    <a href="{{route('categories.index')}}"--}}
 {{--                       class="nav-link @if(strpos(url()->current(),'categories')!== false)) active @endif">--}}
@@ -194,8 +221,7 @@
 {{--                    </a>--}}
 {{--                </li>--}}
 {{--                @dd(Route::currentRouteName())--}}
-                <li class="nav-item has-treeview
-                  @if(strpos(url()->current(),'my_admin/subscribe/')!=false) active menu-open @endif ">
+                <li class="nav-item has-treeview  @if(strpos(url()->current(),'my_admin/subscribe/')!=false) active menu-open @endif ">
                     <a href="" class="nav-link">
                         <i class="nav-icon fas fa-edit"></i>
                         <p>
@@ -253,7 +279,7 @@
 {{--                            Subscribers--}}
 {{--                        </p>--}}
 {{--                    </a>--}}
-{{--                </li>--}}
+                </li>
 
             </ul>
         </nav>

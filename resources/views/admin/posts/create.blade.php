@@ -91,7 +91,7 @@
                                         <div class="card-body">
                                             <label>Վերնագիր *</label>
                                             <input type="text" name="title_{{$lang['code']}}" class="form-control"
-                                                   id="input_name_{{$lang['code']}}"
+                                                   id="input_title_{{$lang['code']}}"
                                                    value="{{old('title_'.$lang['code'])}}">
                                             <span class="error_message_name_{{$lang['code']}} valid_error"></span>
 
@@ -129,6 +129,21 @@
                                                   CKEDITOR.replace( 'summary-ckeditor_{{$loop->index}}' );
                                                  </script>
                                         </div>
+
+                                        <div class="card-body">
+                                            <label>Նյութի աղբյուր</label>
+                                            <input type="text" name="link_{{$lang['code']}}" class="form-control"
+                                                   id="input_link_{{$lang['code']}}"
+                                                   value="{{old('link_'.$lang['code'])}}">
+                                            <span class="error_message_name_{{$lang['code']}} valid_error"></span>
+
+                                            @if ($errors->has('link_'.$lang['code']))
+                                                <span
+                                                    class="valid-error">{{ $errors->first('link_'.$lang['code']) }}</span>
+                                            @endif
+
+                                        </div>
+
                                     </div>
                                 @endforeach
                                     <div class="card-body">

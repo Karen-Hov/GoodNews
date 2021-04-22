@@ -1,16 +1,14 @@
 @extends('layouts.AdminLayouts.index')
-
 @section('styles')
     <link rel="stylesheet" href="{{asset('admin/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css')}}">
-    <link rel="stylesheet" href="{{asset('admin/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css')}}">
+    <link rel="stylesheet"
+          href="{{asset('admin/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css')}}">
     <link rel="stylesheet" href="{{asset('admin/plugins/select2/css/select2.min.css')}}">
     {{--    <link rel="stylesheet" href="{{asset('admin/plugins/select2/css/select2.min.css')}}">--}}
-
     <link rel="stylesheet" href="{{asset('admin/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
     <link rel="stylesheet" href="{{asset('admin/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css')}}">
     <link rel="stylesheet" href="{{ asset('admin/plugins/summernote/summernote-bs4.css') }}">
     <script src="{{asset('admin/js/cropper.min.js')}}"></script>
-
 
 @endsection
 
@@ -20,21 +18,19 @@
         <div class="row">
             <div class="col-12">
                 <div class="col-12 col-sm-8">
-                    <div id="breadcrumb"> <a href="{{url('my_admin/posts/')}}">Փաթեթներ </a> <a href="#">Խմբագրել  </a></div>
-
-                    <h1>Փաթեթներ</h1>
+                    <h1>Խմբագրել</h1>
                     <div class="card card-primary card-outline card-tabs">
                         <div class="card-header p-0 pt-1 border-bottom-0">
                             <ul class="nav nav-tabs" id="custom-tabs-three-tab" role="tablist">
                                 @foreach(config('lang') as $lang)
                                     <li class="nav-item">
-                                        <a class="nav-link @if($loop->first)active @endif
+                                        <a class="nav-link  @if($loop->first) active @endif
                                         @if(($errors->has('name_hy') || $errors->has('content_hy') || $errors->has('description_hy'))  && $lang['code'] == 'hy')
                                             error
                                         @endif
-                                        @if(($errors->has('name_pr') || $errors->has('content_pr') || $errors->has('description_pr'))  && $lang['code'] == 'pr')
+                                        @if(($errors->has('name_ru') || $errors->has('content_ru') || $errors->has('description_ru'))  && $lang['code'] == 'ru')
                                             error
-                                            @endif
+                                        @endif
                                         @if(($errors->has('name_en') || $errors->has('content_en') || $errors->has('description_en'))  && $lang['code'] == 'en')
                                             error
                                         @endif
@@ -43,16 +39,16 @@
                                            href="#tab_{{$loop->index}}" role="tab"
                                            aria-controls="custom-tabs-three-home"
                                            aria-selected="true">{{$lang['name']}}</a>
-                                        @endforeach
                                     </li>
+                                @endforeach
 
                             </ul>
                         </div>
-
+                        {{--                        @dd($errors->has('name_hy'))--}}
                         @if ($errors->any())
                             <div class="alert alert-danger">
                                 <ul>
-                                    <li class="error">Please fill in all the fields ․․․</li>
+                                    <li class="error">Խնդրում ենք լրացնել բոլոր դաշտերը․․․</li>
                                 </ul>
                             </div>
                         @endif
@@ -61,20 +57,20 @@
                               enctype="multipart/form-data" novalidate="novalidate">
                             @csrf
                             @method('PUT')
-
                             <div class="card-body">
+{{--                                @dd($post)--}}
                                 <div class="form-group">
                                     <label>Խմբագրել կատեգորիան *</label>
                                     <select class="select2" data-placeholder="Select a State"
                                             style="width: 100%;" name="cat" id="location">
-                                        @if($categories)
+                                        @if($post)
                                             @foreach($categories as $item)
                                                 <option value="{{$item->id}}" data-id="{{$item->id}}"
-                                                @if(old('category') == $post->type)
-                                                     {{'selected'}}
-                                                @elseif($item->id == $post->type)
+                                                @if(old('category') == $post->category)
                                                     {{'selected'}}
-                                                @endif
+                                                    @elseif($item->id == $post->category)
+                                                    {{'selected'}}
+                                                    @endif
                                                 >
                                                     {{$item->translate[0]->title}}
                                                 </option>
@@ -88,79 +84,115 @@
                                     @endif
                                 </div>
                             </div>
-
                             <div class="tab-content" id="custom-tabs-three-tabContent">
                                 @foreach(config('lang') as $lang)
-                                    @foreach($post->translate as $item)
-                                        @if($lang['code'] == $item['code'])
 
-                                            <div class="tab-pane fade @if($loop->first) show active  @endif"
-                                                 id="tab_{{$loop->index}}"
-                                                 role="tabpanel">
+                                    <input type="hidden" value="{{$lang['code']}}" id="input_lang">
 
-                                                <div class="card-body">
-                                                    <div class="form-group">
-                                                        <label>Խմբագրել վերնագիրը *</label>
-                                                        <input type="text" name="title_{{$lang['code']}}"
-                                                               class="form-control" id="input_name_{{$lang['code']}}"
-                                                               value="{{isset($post->translate[$loop->index]->title)?$post->translate[$loop->index]->title:old('title_'.$lang['code'])}}">
-                                                        @if ($errors->has('title_'.$lang['code']))
-                                                            <span
-                                                                class="valid-error">{{ $errors->first('title_'.$lang['code']) }}</span>
-                                                        @endif
-                                                        <span class="error_message_name_{{$lang['code']}} valid_error"></span>
-                                                    </div>
-                                                </div>
-                                                <div class="card-body">
-                                                    <div class="form-group">
-                                                        <label>Խմբագրել ենթավերնագիրը *</label>
-                                                        <input type="text" name="subtitle_{{$lang['code']}}"
-                                                               class="form-control" id="input_name_{{$lang['code']}}"
-                                                               value="{{isset($post->translate[$loop->index]->subtitle)?$post->translate[$loop->index]->subtitle:old('subtitle_'.$lang['code'])}}">
-                                                        @if ($errors->has('subtitle_'.$lang['code']))
-                                                            <span
-                                                                class="valid-error">{{ $errors->first('subtitle_'.$lang['code']) }}</span>
-                                                        @endif
-                                                        <span class="error_message_name_{{$lang['code']}} valid_error"></span>
-                                                    </div>
-                                                </div>
-                                                <div class="card-body">
-                                                    <div class="form-group">
-                                                        <label>Խմբագրել նկարագրությունը *</label>
-                                                        <textarea type="text" id="summary-ckeditor_{{$loop->index}}" name="content_{{$lang['code']}}" class="form-control">{{isset($post->translate[$loop->index]->content)?$post->translate[$loop->index]->content:old('content_'.$lang['code'])}}</textarea>
-                                                        @if ($errors->has('content_'.$lang['code']))
-                                                            <span class="valid-error">{{ $errors->first('content_'.$lang['code']) }}</span>
-                                                        @endif
-                                                    </div>
-                                                    <script src="{{ asset('vendor/unisharp/ckeditor/ckeditor.js') }}"></script>
-                                                    <script>
-                                                        CKEDITOR.replace( 'summary-ckeditor_{{$loop->index}}' );
-                                                    </script>
-                                                </div>
+                                    <div class="tab-pane fade @if($loop->first) show active  @endif"
+                                         id="tab_{{$loop->index}}"
+                                         role="tabpanel">
+                                        <div class="card-body">
+                                            <div class="form-group">
+                                                <label>Խմբագրել վերնագիրը *</label>
+                                                <input type="text" name="title_{{$lang['code']}}"
+                                                       class="form-control" id="input_name_{{$lang['code']}}"
+                                                       value="{{isset($post->translate[$loop->index]->title)?$post->translate[$loop->index]->title:old('title_'.$lang['code'])}}">
+                                            @if ($errors->has('title_'.$lang['code']))
+                                                    <span
+                                                        class="valid-error">{{ $errors->first('title_'.$lang['code']) }}</span>
+                                                @endif
+                                                <span class="error_message_name_{{$lang['code']}} valid_error"></span>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="form-group">
+                                                <label>Խմբագրել ենթավերնագիրը *</label>
+                                                <input type="text" name="subtitle_{{$lang['code']}}"
+                                                       class="form-control" id="input_name_{{$lang['code']}}"
+                                                       value="{{isset($post->translate[$loop->index]->subtitle)?$post->translate[$loop->index]->subtitle:old('subtitle_'.$lang['code'])}}">
+                                                @if ($errors->has('subtitle_'.$lang['code']))
+                                                    <span
+                                                        class="valid-error">{{ $errors->first('subtitle_'.$lang['code']) }}</span>
+                                                @endif
+                                                <span class="error_message_name_{{$lang['code']}} valid_error"></span>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="form-group">
+                                                <label>Խմբագրել նկարագրությունը *</label>
+                                                <textarea type="text" id="summary-ckeditor_{{$loop->index}}" name="content_{{$lang['code']}}" class="form-control">{{isset($post->translate[$loop->index]->content)?$post->translate[$loop->index]->content:old('content_'.$lang['code'])}}</textarea>
+                                                @if ($errors->has('content_'.$lang['code']))
+                                                    <span class="valid-error">{{ $errors->first('content_'.$lang['code']) }}</span>
+                                                @endif
+                                            </div>
+                                            <script src="{{ asset('vendor/unisharp/ckeditor/ckeditor.js') }}"></script>
+                                            <script>
+                                                CKEDITOR.replace( 'summary-ckeditor_{{$loop->index}}' );
+                                            </script>
+                                        </div>
+                                    </div>
+                                @endforeach
+                                    <div class="card-body">
+                                        <label for="exampleInputFile">Նկար *</label>
+                                        <div class="input-group">
+                                            <div class="custom-file">
+                                                <input type="file" name="file" class="custom-file-input viewImage" id="file-input" value="{{$post->file ? $post->file : old('file') }}" accept=".jpeg,.png,.jpg,.png">
+
+                                                <label class="custom-file-label" for="exampleInputFile">Ընտրել ֆայլը</label>
 
                                             </div>
-                                        @endif
-                                    @endforeach
-                                @endforeach
+                                            <span class="error_message_file valid_error"></span>
+                                        </div>
+                                        <div class="addImage" style="margin:10px;">
+                                            @if($post->file)
+                                                <img style="width: 150px;height: 150px"
+                                                     src="{{asset('storage/posts/small/'.$post->file)}} "
+                                                     class="tableImage" alt="">
+                                                <span class="delimg"><i class="fas fa-times fa-2x"></i></span>
+                                            @endif
+                                            <span></span>
+
+                                        </div>
+                                        <div class="box-2" style="width: 700px">
+                                            <div class="result"></div>
+                                        </div>
+                                        <!--rightbox-->
+                                        <div class="box-2 img-result hide" >
+                                            <!-- result of crop -->
+                                            <img class="cropped" src="" alt="" style="width: 800px;height: 800px">
+                                        </div>
+                                        <!-- input file -->
+                                        <div class="box">
+                                            <div class="options hide">
+                                                {{--                    <label> Width</label>--}}
+                                                <input type="number" class="img-w" value="400" min="100" max="1200"/>
+
+                                            </div>
+                                            <!-- save btn -->
+                                            <button class="btn btn-dark save hide">Կտրել նկարը</button>
+
+                                        </div>
+
+                                        <input type='hidden' name="x">
+
+                                    </div>
                             </div>
 
 
-
-
-                    {{--                            </div>--}}
-                    <input type="hidden" name="translate" value="post" id="translate_type">
-                    <!-- /.card -->
+                            <input type="hidden" name="translate" value="post" id="translate_type">
+                            <div class="card-body">
+                            </div>
+                            <!-- /.card -->
                         </form>
-                        <div class="card-body" >
-                            <button type="submit" class="btn btn-primary" data-toggle="modal" id="submit_btn"
-                                    data-target="#modal-primary">
-                                Խմբագրել
-                            </button>
-                        </div>
+                        <button class="btn btn-primary" data-toggle="modal" id="submit_btn"
+                                data-target="#modal-primary">
+                            Խմբագրել
+                        </button>
                     </div>
+                </div>
             </div>
-        </div>
-        <!-- /.col -->
+            <!-- /.col -->
         </div>
         <!-- /.row -->
     </section>
@@ -172,28 +204,37 @@
     <script>
 
 
+
+        var clicked = false;
         $('.btn.btn-primary').click(function () {
-            $(this).attr('disabled', 'disabled');
+            if (!clicked) {
+                clicked = true
+                $(this).attr('disabled', 'disabled');
 
-            $('#text').attr('disabled', false);
 
-            setTimeout(function () {
+                setTimeout(function () {
+
                     $('.form-horizontal').submit();
 
-            },100)
-
+                    clicked = false
+                }, 100)
+                // $('.form-horizontal').submit();
+            }
 
 
         })
 
 
-
+        // $(function () {
+        //     //Initialize Select2 Elements
         $('.select2').select2()
-        //
-        //Initialize Select2 Elements
+        //     //
+        //     // //Initialize Select2 Elements
         $('.select2bs4').select2({
             theme: 'bootstrap4'
         })
+
+
     </script>
     <script src="{{asset('admin/plugins/summernote/summernote-bs4.min.js')}}"></script>
     <script src="{{asset('admin/js/crop-canvas.js')}}"></script>
@@ -209,18 +250,23 @@
         #tab_0 .card-body.ru {
             display: none;
         }
+
         #tab_0 .card-body.en {
             display: none;
         }
+
         #tab_1 .card-body.hy {
             display: none;
         }
+
         #tab_1 .card-body.en {
             display: none;
         }
+
         #tab_2 .card-body.hy {
             display: none;
         }
+
         #tab_2 .card-body.ru {
             display: none;
         }

@@ -23,7 +23,7 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Փաթեթներ</h3>
+                        <h3 class="card-title">Նորություններ</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -34,22 +34,22 @@
                                 <th>Վերնագիր</th>
                                 <th>Ենթավերնագիր</th>
                                 <th>Կատեգորիա</th>
+                                <th>Սլայդեր</th>
                                 <th>Գործողություն</th>
                             </tr>
                             </thead>
                             <tbody>
-{{--                            @dd($posts[1]->category)--}}
                             @if($posts)
                                 @foreach($posts as $item)
                                     <tr>
                                         <td>{{isset($item->translate[0]->title)?Str::limit($item->translate[0]->title,50):''}} </td>
                                         <td>{{isset($item->translate[0]->subtitle)?Str::limit($item->translate[0]->subtitle,50):''}} </td>
                                         <td>
-{{--                                            @dd($item)--}}
-                                            {{isset($item->category->translate[0]->title)?Str::limit($item->category->translate[0]->title,50):''}}
+                                            {{isset($item->categorys[0]->translate[0]->title)?Str::limit($item->categorys[0]->translate[0]->title,50):''}}
+                                        </td>
 
-{{--                                            {{($cat->translate[0]->title) }} <br>--}}
-
+                                        <td>
+                                            <input type="checkbox">
                                         </td>
 
 
@@ -90,7 +90,6 @@
     {{--    <script src="{{asset('admin/plugins/toastr/toastr.min.js')}}"></script>--}}
 
     <script>
-
         function deletePost(target, url, method) {
             let element = $(target).parents('tr');
             if (confirm("Do you really want to delete?!!!")) {
@@ -104,15 +103,11 @@
                     success: function () {
                         element.hide(1000, function () {
                             element.remove()
-
                         });
                     }
                 });
             }
         }
-
-
-
         $(function () {
             // $("#example1").DataTable({
             //     "responsive": true,

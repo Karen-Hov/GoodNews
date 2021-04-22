@@ -15,7 +15,7 @@ class Translate extends Model
     public function about_us(){
         return $this->belongsTo('App/AboutUs');
     }
-    public function carrer(){
+    public function post(){
         return $this->belongsTo('App/Post');
     }
     public function service(){
@@ -24,8 +24,11 @@ class Translate extends Model
     public function partners(){
         return $this->belongsTo('App/Partners');
     }
+    public function menu(){
+        return $this->belongsTo('App/Menu');
+    }
     public function category(){
-        return $this->belongsTo('App/PortfolioCategory');
+        return $this->belongsTo('App/Category');
     }
     public static function storeTranslate($request, $page_Id) : bool
     {
