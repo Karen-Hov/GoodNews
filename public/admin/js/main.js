@@ -4,113 +4,112 @@ $('.showInHiddenSidebar').on('click', function () {
 $('.layout-fixed .main-sidebar').toggleClass('show')
 })
 
-console.log('l')
-    $(".owlThree").owlCarousel({
-        items: 4,
-        loop:true,
-        navigation : false,
-        slideSpeed : 300,
-        paginationSpeed : 400,
-        singleItem:true,
-
-        smartSpeed: 1000,
-        responsive : {
-
-            0 : {
-                items:1
-            },
-
-            768 : {
-                items:2
-            },
-            1050: {
-                items:3
-            },
-            1370: {
-                items:4
-            }
-
-        }
-
-    });
-
-
-    var bigimage = $("#big");
-    var thumbs = $("#thumbs");
-    //var totalslides = 10;
-    var syncedSecondary = true;
-
-    bigimage
-        .owlCarousel({
-            items: 1,
-            slideSpeed: 2000,
-            nav: true,
-
-            // autoplay: true,
-            dots: false,
-            // loop: true,
-            responsiveRefreshRate: 200,
-            navText: [
-                '<i class="fas fa-chevron-left"></i>',
-                '<i class="fas fa-chevron-right"></i>'
-            ]
-        })
-        .on("changed.owl.carousel", syncPosition);
-
-    thumbs
-        .on("initialized.owl.carousel", function() {
-            thumbs
-                .find(".owl-item")
-                .eq(0)
-                .addClass("current");
-        })
-        .owlCarousel({
-            items: 3,
-            dots: true,
-            // loop:true,
-            nav: true,
-            navText: [
-                '<i class="fas fa-chevron-left"></i>',
-                '<i class="fas fa-chevron-right"></i>'
-            ],
-            smartSpeed: 200,
-            slideSpeed: 500,
-            slideBy: 1,
-            responsiveRefreshRate: 100,
-
-            responsive : {
-
-                0 : {
-                    items:2
-                },
-
-                600 : {
-                    items:3
-                },
-
-            }
-        })
+    // $(".owlThree").owlCarousel({
+    //     items: 4,
+    //     loop:true,
+    //     navigation : false,
+    //     slideSpeed : 300,
+    //     paginationSpeed : 400,
+    //     singleItem:true,
+    //
+    //     smartSpeed: 1000,
+    //     responsive : {
+    //
+    //         0 : {
+    //             items:1
+    //         },
+    //
+    //         768 : {
+    //             items:2
+    //         },
+    //         1050: {
+    //             items:3
+    //         },
+    //         1370: {
+    //             items:4
+    //         }
+    //
+    //     }
+    //
+    // });
 
 
-    function syncPosition(el) {
-        //if loop is set to false, then you have to uncomment the next line
-        //var current = el.item.index;
+    // var bigimage = $("#big");
+    // var thumbs = $("#thumbs");
+    // //var totalslides = 10;
+    // var syncedSecondary = true;
+    //
+    // bigimage
+    //     .owlCarousel({
+    //         items: 1,
+    //         slideSpeed: 2000,
+    //         nav: true,
+    //
+    //         // autoplay: true,
+    //         dots: false,
+    //         // loop: true,
+    //         responsiveRefreshRate: 200,
+    //         navText: [
+    //             '<i class="fas fa-chevron-left"></i>',
+    //             '<i class="fas fa-chevron-right"></i>'
+    //         ]
+    //     })
+    //     .on("changed.owl.carousel", syncPosition);
+    //
+    // thumbs
+    //     .on("initialized.owl.carousel", function() {
+    //         thumbs
+    //             .find(".owl-item")
+    //             .eq(0)
+    //             .addClass("current");
+    //     })
+    //     .owlCarousel({
+    //         items: 3,
+    //         dots: true,
+    //         // loop:true,
+    //         nav: true,
+    //         navText: [
+    //             '<i class="fas fa-chevron-left"></i>',
+    //             '<i class="fas fa-chevron-right"></i>'
+    //         ],
+    //         smartSpeed: 200,
+    //         slideSpeed: 500,
+    //         slideBy: 1,
+    //         responsiveRefreshRate: 100,
+    //
+    //         responsive : {
+    //
+    //             0 : {
+    //                 items:2
+    //             },
+    //
+    //             600 : {
+    //                 items:3
+    //             },
+    //
+    //         }
+    //     })
+    //
+    //
+    // function syncPosition(el) {
+    //     //if loop is set to false, then you have to uncomment the next line
+    //     //var current = el.item.index;
+    //
+    //     //to disable loop, comment this block
+    //     console.log(el);
+    //     var count = el.item.count - 1;
+    //     var current = Math.round(el.item.index - el.item.count / 2 - 0.5);
+    //
+    //
+    // }
 
-        //to disable loop, comment this block
-        console.log(el);
-        var count = el.item.count - 1;
-        var current = Math.round(el.item.index - el.item.count / 2 - 0.5);
 
 
-    }
-
-
-
-    thumbs.on("click", ".owl-item", function(e) {
-        e.preventDefault();
-        var number = $(this).index();
-        bigimage.data("owl.carousel").to(number, 300, true);
-    });
+    // thumbs.on("click", ".owl-item", function(e) {
+    //     e.preventDefault();
+    //     var number = $(this).index();
+    //     bigimage.data("owl.carousel").to(number, 300, true);
+    // });
 
     $('.feedback .addFeedback button').on('click' , function(){
         $('.addfeedbackModal').show()
@@ -363,6 +362,15 @@ console.log('l')
         }
 
     }
+
+    // $('#check').click(function (){
+    //     // console.log($(this).val())
+    //     console.log($('#check').is(':checked'))
+    // })
+    //
+    // function itemsSlider(that,ids,types){
+    //     console.log(that,ids,types)
+    // }
 
 })
 

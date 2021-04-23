@@ -100,6 +100,7 @@ class Post extends Model
 //            }
             $posts->category =  $request['cat'];
             $posts->link =  $request['link'];
+            $posts->slayder =  $request['slayder']?1:0;
             $posts->save();
             Translate::storeTranslate($request, $posts->id);
         });
@@ -120,6 +121,18 @@ class Post extends Model
         }
         return true;
     }
+
+    public static function slayd_change($request){
+
+        if($request->slayder_checked){
+            $posts = Post::where('id',$request->id)->update(['slayder'=>0]);
+//            dd($request->slayder_checked,$posts);
+            return 'off';
+    }else{
+       $posts = Post::where('id',$request->id)->update(['slayder'=>1]);
+       return 'on';
+   }
+}
 
 //    public static function getPosts(){
 //        $posts = Post::with(['t'=>function($q){

@@ -49,7 +49,9 @@
                                         </td>
 
                                         <td>
-                                            <input type="checkbox">
+
+                                            <input type="checkbox" @if($item->slayder == 1) checked @endif class="post_check"
+                                                   id="check" onchange="itemsSlider(this,'{{$item->id}}','posts')">
                                         </td>
 
 
@@ -108,6 +110,39 @@
                 });
             }
         }
+
+        function itemsSlider(that, id, type) {
+
+            // console.log($('#check').attr('checked'))
+            var slayder_checked = $(that).attr('checked');
+            if(slayder_checked != 'checked'){
+                slayder_checked = '';
+            }
+            console.log($(this).attr('checked'),slayder_checked)
+            // if ($(that).attr('checked')) {
+                $.ajax({
+                    type: 'GET',
+                    url: 'slider-filter-category',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    data: {
+                        id,
+                        type,
+                        slayder_checked,
+                    },
+                    success: function (data) {
+                        console.log(data)
+                        if(data == "off"){
+                            $(this).attr('checked',false)
+                        }
+                        if(data == "on"){
+                            $(this).attr('checked','checked')
+                        }
+                    }
+                });
+        }
+
         $(function () {
             // $("#example1").DataTable({
             //     "responsive": true,

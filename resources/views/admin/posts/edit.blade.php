@@ -144,6 +144,15 @@
                                             <span class="error_message_link valid_error"></span>
                                         </div>
                                     </div>
+                                    <div class="card-body">
+                                        <label>Սլայդեր</label>
+                                        <input type="checkbox" name="slayder" @if(old('slayder') || isset($post->slayder)) checked @endif class="form-control" id="input_slayder" style="width: 5%">
+                                        <span class="error_message_name valid_error"></span>
+                                        @if ($errors->has('slayder'))
+                                            <span class="valid-error">{{ $errors->first('slayder') }}</span>
+                                        @endif
+
+                                    </div>
 
                                     <div class="card-body">
                                         <label for="exampleInputFile">Նկար *</label>

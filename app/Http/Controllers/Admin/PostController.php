@@ -47,6 +47,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+//        dd($request->all());
         Post::storePost($request);
         return redirect('/my_admin/posts/')->with('flash_message_success','Նորությունը հաջողությամբ ավելացվել է ');
     }
@@ -107,5 +108,16 @@ class PostController extends Controller
     {
         $post = Post::deleteItemRow($id);
         return response()->json(['status'=>$post]);
+    }
+
+    public function slayder(Request $request)
+    {
+
+//        dd($request->all());
+
+        $post = Post::slayd_change($request);
+        return $post;
+        dd($post);
+//        return response()->json(['status'=>$post]);
     }
 }

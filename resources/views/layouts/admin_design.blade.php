@@ -9,7 +9,7 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
-    <link rel="shortcut icon" href="{{asset('site/img/itlogo.png')}}" type="image/x-icon">
+    <link rel="shortcut icon" href="" type="image/x-icon">
 
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">

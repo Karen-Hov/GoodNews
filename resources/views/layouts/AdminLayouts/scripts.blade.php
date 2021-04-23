@@ -26,4 +26,5 @@
 @yield('scripts')
 <script src="{{asset('admin/dist/js/demo.js')}}"></script>
 <script src="{{asset('admin/dist/js/main.js')}}"></script>
+<script src="{{asset('admin/js/main.js')}}"></script>
 

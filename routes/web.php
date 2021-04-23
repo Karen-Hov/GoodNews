@@ -44,9 +44,9 @@ Route::prefix('my_admin')->middleware('auth')->group(function () {
 //        'contact_us' => ContactAdminController::class,
 //        'subscribe' => SubscribetAdminController::class,
     ]);
+    Route::get('slider-filter-category',[PostController::class,'slayder']);
 
 });
-
 
 
 
