@@ -22,32 +22,32 @@
                 <div class="col-12 col-sm-8">
                     <h1>Ավելացնել</h1>
                     <div class="card card-primary card-outline card-tabs">
-                        <div class="card-header p-0 pt-1 border-bottom-0">
-                            <ul class="nav nav-tabs" id="custom-tabs-three-tab" role="tablist">
-                                @foreach(config('lang') as $lang)
+{{--                        <div class="card-header p-0 pt-1 border-bottom-0">--}}
+{{--                            <ul class="nav nav-tabs" id="custom-tabs-three-tab" role="tablist">--}}
+{{--                                @foreach(config('lang') as $lang)--}}
 {{--                                   --}}
-                                    <li class="nav-item">
-                                        <a class="nav-link  @if($loop->first) active @endif
-                                             @if(($errors->has('name_hy') || $errors->has('content_hy') || $errors->has('description_hy'))  && $lang['code'] == 'hy')
-                                             error
-                                             @endif
-                                            @if(($errors->has('name_ru') || $errors->has('content_ru') || $errors->has('description_ru'))  && $lang['code'] == 'ru')
-                                             error
-                                             @endif
-                                            @if(($errors->has('name_en') || $errors->has('content_en') || $errors->has('description_en'))  && $lang['code'] == 'en')
-                                             error
-                                            @endif
-                                            "
-                                           id="custom-tabs-three-home-tab" data-toggle="pill"
-                                           href="#tab_{{$loop->index}}" role="tab"
-                                           aria-controls="custom-tabs-three-home"
-                                           aria-selected="true">{{$lang['name']}}</a>
-                                    </li>
+{{--                                    <li class="nav-item">--}}
+{{--                                        <a class="nav-link  @if($loop->first) active @endif--}}
+{{--                                             @if(($errors->has('name_hy') || $errors->has('content_hy') || $errors->has('description_hy'))  && $lang['code'] == 'hy')--}}
+{{--                                             error--}}
+{{--                                             @endif--}}
+{{--                                            @if(($errors->has('name_ru') || $errors->has('content_ru') || $errors->has('description_ru'))  && $lang['code'] == 'ru')--}}
+{{--                                             error--}}
+{{--                                             @endif--}}
+{{--                                            @if(($errors->has('name_en') || $errors->has('content_en') || $errors->has('description_en'))  && $lang['code'] == 'en')--}}
+{{--                                             error--}}
+{{--                                            @endif--}}
+{{--                                            "--}}
+{{--                                           id="custom-tabs-three-home-tab" data-toggle="pill"--}}
+{{--                                           href="#tab_{{$loop->index}}" role="tab"--}}
+{{--                                           aria-controls="custom-tabs-three-home"--}}
+{{--                                           aria-selected="true">{{$lang['name']}}</a>--}}
+{{--                                    </li>--}}
 {{--                                   --}}
-                                        @endforeach
+{{--                                        @endforeach--}}
 
-                            </ul>
-                        </div>
+{{--                            </ul>--}}
+{{--                        </div>--}}
                         {{--                        @dd($errors->has('name_hy'))--}}
                         @if ($errors->any())
                             <div class="alert alert-danger">
@@ -60,8 +60,28 @@
                               enctype="multipart/form-data" novalidate="novalidate">
                             @csrf
                             @method('POST')
+{{--                            @dd(config('lang'))--}}
                             <div class="card-body">
-                                <label>Կատեգորիա *</label>
+                                <label>Ընտրել լեզուն *</label>
+                                <select class="form-control"  data-placeholder="Ընտրել լեզուն"
+                                        style="width: 100%;" name="lang" autoselect="false" id="lang">
+
+                                    @if(config('lang'))
+                                        @foreach(config('lang') as $lang)
+                                            <option
+                                                @if(old('lang')) {{in_array($lang['code'],old('lang')) ?'selected':''}}  @endif
+                                                value="{{$lang['code']}}">{{$lang['name']}}</option>
+                                        @endforeach
+                                    @endif
+                                </select>
+                                @if ($errors->has('cat'))
+                                    <span class="valid-error">{{ $errors->first('cat') }}</span>
+                                @endif
+                            </div>
+
+
+                            <div class="card-body">
+                                <label>Ընտրել տեսակ *</label>
                                 <select class="select2"  data-placeholder="Ընտրեք կատեգորիա"
                                         style="width: 100%;" name="cat" autoselect="false" id="location">
                                     {{--                                <select class="form-control select2" style="width: 100%;" name="cat">--}}
@@ -79,39 +99,39 @@
                             </div>
 
                             <div class="tab-content" id="custom-tabs-three-tabContent">
-                                @foreach(config('lang') as $lang)
+{{--                                @foreach(config('lang') as $lang)--}}
 
-                                    <input type="hidden" value="{{$lang['code']}}" id="input_lang">
+{{--                                    <input type="hidden" value="{{$lang['code']}}" id="input_lang">--}}
 
-                                    <div class="tab-pane fade @if($loop->first) show active  @endif"
-                                         id="tab_{{$loop->index}}"
-                                         role="tabpanel">
+{{--                                    <div class="tab-pane fade @if($loop->first) show active  @endif"--}}
+{{--                                         id="tab_{{$loop->index}}"--}}
+{{--                                         role="tabpanel">--}}
 
 
                                         <div class="card-body">
                                             <label>Վերնագիր *</label>
-                                            <input type="text" name="title_{{$lang['code']}}" class="form-control"
-                                                   id="input_title_{{$lang['code']}}"
-                                                   value="{{old('title_'.$lang['code'])}}">
-                                            <span class="error_message_name_{{$lang['code']}} valid_error"></span>
+                                            <input type="text" name="title" class="form-control"
+                                                   id="input_title"
+                                                   value="{{old('title')}}">
+                                            <span class="error_message_name valid_error"></span>
 
-                                            @if ($errors->has('title_'.$lang['code']))
+                                            @if ($errors->has('title'))
                                                 <span
-                                                    class="valid-error">{{ $errors->first('title_'.$lang['code']) }}</span>
+                                                    class="valid-error">{{ $errors->first('title') }}</span>
                                             @endif
 
                                         </div>
 
                                         <div class="card-body">
                                             <label>Ենթավերնագիր *</label>
-                                            <input type="text" name="subtitle_{{$lang['code']}}" class="form-control"
-                                                   id="input_name_{{$lang['code']}}"
-                                                   value="{{old('subtitle_'.$lang['code'])}}">
-                                            <span class="error_message_name_{{$lang['code']}} valid_error"></span>
+                                            <input type="text" name="subtitle" class="form-control"
+                                                   id="input_name"
+                                                   value="{{old('subtitle')}}">
+                                            <span class="error_message_name valid_error"></span>
 
-                                            @if ($errors->has('subtitle_'.$lang['code']))
+                                            @if ($errors->has('subtitle'))
                                                 <span
-                                                    class="valid-error">{{ $errors->first('subtitle_'.$lang['code']) }}</span>
+                                                    class="valid-error">{{ $errors->first('subtitle') }}</span>
                                             @endif
 
                                         </div>
@@ -119,21 +139,20 @@
                                         <div class="card-body">
                                             <div class="form-group">
                                                 <label>Նկարագրություն *</label>
-                                                <textarea type="text" id="summary-ckeditor_{{$loop->index}}" name="content_{{$lang['code']}}" class="form-control">{{old('content_'.$lang['code'])}}</textarea>
-                                                @if ($errors->has('content_'.$lang['code']))
-                                                    <span class="valid-error">{{ $errors->first('content_'.$lang['code']) }}</span>
+                                                <textarea type="text" id="summary-ckeditor" name="content" class="form-control">{{old('content')}}</textarea>
+                                                @if ($errors->has('content'))
+                                                    <span class="valid-error">{{ $errors->first('content') }}</span>
                                                 @endif
                                             </div>
                                                  <script src="{{ asset('vendor/unisharp/ckeditor/ckeditor.js') }}"></script>
                                                  <script>
-                                                  CKEDITOR.replace( 'summary-ckeditor_{{$loop->index}}' );
+                                                  CKEDITOR.replace( 'summary-ckeditor' );
                                                  </script>
                                         </div>
 
 
 
                                     </div>
-                                @endforeach
                                     <div class="card-body">
                                         <label>Նյութի աղբյուր</label>
                                         <input type="text" name="link" class="form-control" id="input_link"
@@ -196,7 +215,7 @@
 
                                         <input type='hidden' name="x">
                                     </div>
-                            </div>
+{{--                            </div>--}}
 
 
                             <input type="hidden" name="translate" value="post" id="translate_type">

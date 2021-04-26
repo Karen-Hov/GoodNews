@@ -10,7 +10,7 @@
     'locale' => 'hy',
     'locales' => 
     array (
-      'hy' => 'Armenia',
+      'hy' => 'Հայերեն',
       'en' => 'English',
       'ru' => 'Russian',
     ),
@@ -399,19 +399,19 @@
   array (
     0 => 
     array (
-      'name' => 'Armenian',
+      'name' => 'Հայերեն',
       'code' => 'hy',
       'nam' => 'Հայ',
     ),
     1 => 
     array (
-      'name' => 'Russian',
+      'name' => 'Ռուսերեն',
       'code' => 'ru',
       'nam' => 'Ру',
     ),
     2 => 
     array (
-      'name' => 'English',
+      'name' => 'Անգլերեն',
       'code' => 'en',
       'nam' => 'En',
     ),

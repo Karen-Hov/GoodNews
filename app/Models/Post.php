@@ -23,7 +23,7 @@ class Post extends Model
 
     public function categorys()
     {
-        return $this->hasMany(SubMenu::class ,'id','category');
+        return $this->hasMany(SubMenu::class ,'id','type');
     }
 
     public static function storePost($request)
@@ -98,11 +98,19 @@ class Post extends Model
 //            else{
 //                $posts->file = null;
 //            }
-            $posts->category =  $request['cat'];
+//            dd($posts);
+            $posts->code = $request['lang'];
+            $posts->title = $request['title'];
+            $posts->subtitle = $request['subtitle'];
+            $posts->content = $request['content'];
+
+            $posts->type =  $request['cat'];
             $posts->link =  $request['link'];
-            $posts->slayder =  $request['slayder']?1:0;
+            $posts->slayd_check =  $request['slayder']?1:0;
+            $posts->video =  $request['video']?$request['video']:"";
+
             $posts->save();
-            Translate::storeTranslate($request, $posts->id);
+//            Translate::storeTranslate($request, $posts->id);
         });
         return $posts;
 

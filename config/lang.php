@@ -1,17 +1,17 @@
 <?php
 return [
     [
-        'name' => 'Armenian',
+        'name' => 'Հայերեն',
         'code' => 'hy',
         'nam' => 'Հայ',
     ],
     [
-        'name' => 'Russian',
+        'name' => 'Ռուսերեն',
         'code' => 'ru',
         'nam' => 'Ру',
     ],
     [
-        'name' => 'English',
+        'name' => 'Անգլերեն',
         'code' => 'en',
         'nam' => 'En',
     ],

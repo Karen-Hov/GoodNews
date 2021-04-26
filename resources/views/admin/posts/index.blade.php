@@ -32,7 +32,7 @@
                             <tr>
 {{--                                <th>#</th>--}}
                                 <th>Վերնագիր</th>
-                                <th>Ենթավերնագիր</th>
+                                <th>Լեզու</th>
                                 <th>Կատեգորիա</th>
                                 <th>Սլայդեր</th>
                                 <th>Գործողություն</th>
@@ -41,16 +41,24 @@
                             <tbody>
                             @if($posts)
                                 @foreach($posts as $item)
+{{--                                    @dd($item,config('lang'))--}}
                                     <tr>
-                                        <td>{{isset($item->translate[0]->title)?Str::limit($item->translate[0]->title,50):''}} </td>
-                                        <td>{{isset($item->translate[0]->subtitle)?Str::limit($item->translate[0]->subtitle,50):''}} </td>
+                                        <td>{{isset($item->title)?Str::limit($item->title,50):''}} </td>
+                                        <td>
+                                            @foreach(config('lang') as $lang)
+                                                @if($lang['code'] == $item->code)
+                                                    {{$lang['name']}}
+                                                @endif
+
+                                            @endforeach
+                                        </td>
                                         <td>
                                             {{isset($item->categorys[0]->translate[0]->title)?Str::limit($item->categorys[0]->translate[0]->title,50):''}}
                                         </td>
 
                                         <td>
 
-                                            <input type="checkbox" @if($item->slayder == 1) checked @endif class="post_check"
+                                            <input type="checkbox" @if($item->slayd_check == 1) checked @endif class="post_check"
                                                    id="check" onchange="itemsSlider(this,'{{$item->id}}','posts')">
                                         </td>
 

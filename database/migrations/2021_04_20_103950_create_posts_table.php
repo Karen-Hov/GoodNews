@@ -15,9 +15,16 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->string('category',255)->nullable();
+            $table->string('code',255)->nullable();
+            $table->string('type',255)->nullable();
+            $table->string('title',255)->nullable();
+            $table->string('subtitle',255)->nullable();
+            $table->longText('content')->nullable();
             $table->string('file',255)->nullable();
             $table->string('link',255)->nullable();
+            $table->string('video',255)->nullable();
+            $table->integer('slayd_check');
+            $table->integer('view');
             $table->timestamps();
         });
     }

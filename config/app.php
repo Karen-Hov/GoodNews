@@ -83,7 +83,7 @@ return [
     'locale' => 'hy',
 //    'locales' => ['ru', 'en','hy'],
     'locales' => [
-        'hy' => 'Armenia',
+        'hy' => 'Հայերեն',
         'en' => 'English',
         'ru' => 'Russian',
     ],

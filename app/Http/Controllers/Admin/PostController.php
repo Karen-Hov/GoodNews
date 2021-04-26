@@ -17,10 +17,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts= Post::with(['translate'=>function ($q){
-            $q->where('code','hy')->where('type','post');
-        },'categorys.translate'])->get();
-//        dd($posts[1]);
+        $posts= Post::with(['categorys.translate'])->orderBy('id','desc')->paginate(20);
        return view('admin.posts.index')->with('posts',$posts);
     }
 
@@ -34,7 +31,6 @@ class PostController extends Controller
         $categories = SubMenu::with(['translate'=>function ($q){
             $q->where('code','hy')->where('type','submenu');
         }])->get();
-
         return view('admin.posts.create')->with(['categories'=>$categories]);
 
     }
@@ -60,9 +56,7 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $post= Post::with(['translate'=>function ($q){
-            $q->where('code','hy')->where('type','post');
-        }])->find($id);
+        $post= Post::find($id);
         return view('admin.posts.show')->with('post',$post);
     }
 
@@ -78,9 +72,7 @@ class PostController extends Controller
             $q->where('code','hy');
         }])->get();
 
-        $post= Post::with(['translate'=>function ($q){
-            $q->where('type','post');
-        },'categorys.translate'])->find($id);
+        $post= Post::with(['categorys.translate'])->find($id);
 //        dd($id,$post);
         return view('admin.posts.edit')->with(['post'=> $post,'categories'=> $categories]);
     }
@@ -94,6 +86,7 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
+//        dd($request->all());
         Post::updatePost($request,$id);
         return redirect('/my_admin/posts/')->with('flash_message_success','Հրապարակումը հաջողությամբ խմբագրված է ');
     }
