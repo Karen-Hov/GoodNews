@@ -49,10 +49,6 @@ Route::prefix('my_admin')->middleware('auth')->group(function () {
 });
 
 
-
-
-
-
 Route::group(['prefix' => '{locale}', 'middleware' => 'lang', 'as'=> 'site'], function () {
 
     Route::get('/', [HomeController::class,'index']);
