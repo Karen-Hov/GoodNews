@@ -57,12 +57,9 @@
                                         </td>
 
                                         <td>
-
                                             <input type="checkbox" @if($item->slayd_check == 1) checked @endif class="post_check"
                                                    id="check" onchange="itemsSlider(this,'{{$item->id}}','posts')">
                                         </td>
-
-
                                         <td class="project-actions text-right">
                                             <a href="{{route('posts.show',$item->id)}}" class="btn btn-success ">Տեսնել</a>
                                             <a href="{{route('posts.edit',$item->id)}}" class="btn btn-success">Կարգավորել</a>
