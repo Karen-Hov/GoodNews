@@ -32,7 +32,6 @@ class PostController extends Controller
             $q->where('code','hy')->where('type','submenu');
         }])->get();
         return view('admin.posts.create')->with(['categories'=>$categories]);
-
     }
 
     /**
@@ -43,7 +42,6 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-//        dd($request->all());
         Post::storePost($request);
         return redirect('/my_admin/posts/')->with('flash_message_success','Նորությունը հաջողությամբ ավելացվել է ');
     }
@@ -71,7 +69,6 @@ class PostController extends Controller
         $categories = SubMenu::with(['translate'=>function ($q){
             $q->where('code','hy');
         }])->get();
-
         $post= Post::with(['categorys.translate'])->find($id);
 //        dd($id,$post);
         return view('admin.posts.edit')->with(['post'=> $post,'categories'=> $categories]);
@@ -86,7 +83,6 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-//        dd($request->all());
         Post::updatePost($request,$id);
         return redirect('/my_admin/posts/')->with('flash_message_success','Հրապարակումը հաջողությամբ խմբագրված է ');
     }
@@ -105,12 +101,7 @@ class PostController extends Controller
 
     public function slayder(Request $request)
     {
-
-//        dd($request->all());
-
         $post = Post::slayd_change($request);
         return $post;
-        dd($post);
-//        return response()->json(['status'=>$post]);
     }
 }

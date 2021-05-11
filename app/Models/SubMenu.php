@@ -50,6 +50,12 @@ class SubMenu extends Model
             $submenu->save();
             Translate::storeTranslate($request, $submenu->id);
         });
+//        dd($request->all(), $submenu);
+//        DB::transaction(function() use($request, $submenu) {
+//            $submenu->menu_id = $request['cat'];
+//            $submenu->save();
+//            Translate::storeTranslate($request, $submenu->id);
+//        });
         return $submenu;
     }
 

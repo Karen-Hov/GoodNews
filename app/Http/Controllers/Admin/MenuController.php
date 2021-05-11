@@ -38,6 +38,8 @@ class MenuController extends Controller
      */
     public function store(Request $request)
     {
+//        dd($request->all());
+
         Menu::storeMenu($request);
         return redirect('/my_admin/menu/')->with('flash_message_success','Կատեգորիան հաջողությամբ ավելացվել է ');
     }

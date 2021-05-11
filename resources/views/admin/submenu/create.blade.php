@@ -118,12 +118,12 @@
 @endsection
 
 @section('scripts')
-    <script>
-        $('.btn.btn-primary').click(function () {
-            $('.form-horizontal').submit();
-            $(this).attr('disabled', 'disabled');
-        })
-    </script>
+{{--    <script>--}}
+{{--        $('.btn.btn-primary').click(function () {--}}
+{{--            $('.form-horizontal').submit();--}}
+{{--            $(this).attr('disabled', 'disabled');--}}
+{{--        })--}}
+{{--    </script>--}}
     <script src="{{asset('admin/plugins/select2/js/select2.full.min.js')}}"></script>
     <script>
 

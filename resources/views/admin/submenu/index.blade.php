@@ -26,7 +26,7 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <table id="example2_1" class="table table-bordered table-striped">
+                        <table id="example2_1" class="table table-bordered table-striped" style="">
                             <thead>
                             <tr>
                                 <th>#</th>

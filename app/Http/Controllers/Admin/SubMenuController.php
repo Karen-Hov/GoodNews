@@ -38,6 +38,7 @@ class SubMenuController extends Controller
     public function create()
     {
         $menu = Menu::with('translate')->get();
+//        dd($menu);
 
         return view('admin.submenu.create')->with('menu',$menu);
 
@@ -51,7 +52,7 @@ class SubMenuController extends Controller
      */
     public function store(Request $request)
     {
-
+//dd($request->all());
         SubMenu::storeSubMenu($request);
         return redirect('/my_admin/submenu/')->with('flash_message_success','Կատեգորիան հաջողությամբ ավելացվել է ');
     }
