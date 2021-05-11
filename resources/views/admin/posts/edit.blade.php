@@ -158,17 +158,17 @@
                                         </div>
 {{--                                    </div>--}}
 {{--                                @endforeach--}}
-                                    <div class="card-body">
-                                        <div class="form-group">
-                                            <label>Խմբագրել Նյութի աղբյուրը *</label>
-                                            <input type="text" name="link" class="form-control" id="input_link"
-                                                   value="{{isset($post->link)?$post->link:old('link')}}">
-                                            @if ($errors->has('link'))
-                                                <span class="valid-error">{{ $errors->first('link') }}</span>
-                                            @endif
-                                            <span class="error_message_link valid_error"></span>
-                                        </div>
-                                    </div>
+{{--                                    <div class="card-body">--}}
+{{--                                        <div class="form-group">--}}
+{{--                                            <label>Խմբագրել Նյութի աղբյուրը *</label>--}}
+{{--                                            <input type="text" name="link" class="form-control" id="input_link"--}}
+{{--                                                   value="{{isset($post->link)?$post->link:old('link')}}">--}}
+{{--                                            @if ($errors->has('link'))--}}
+{{--                                                <span class="valid-error">{{ $errors->first('link') }}</span>--}}
+{{--                                            @endif--}}
+{{--                                            <span class="error_message_link valid_error"></span>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
                                     <div class="card-body">
                                         <label>Սլայդեր</label>
                                         <input type="checkbox" name="slayder" @if(old('slayder') || isset($post->slayd_check)) checked @endif class="form-control" id="input_slayder" style="width: 5%">
@@ -223,6 +223,42 @@
                                         <input type='hidden' name="x">
 
                                     </div>
+
+                                <div class="card-body">
+                                    <div class="col-md-12  BorderCol_12 addPhotoCol12">
+                                        <div class="col-md-12  rowPadding3">
+                                            <label for="exampleInputFile">Pictures * (Minimum width is 457px, minimum height is 539px)</label>
+                                            <span class="error_photo valid_error" style="color: red;margin-left: 20%;"></span>
+                                        </div>
+                                        <div class="col-md-12  rowPadding5">
+                                            <div class="col-md-1 epmtyDivForUplodImage "></div>
+                                            <div class="col-md-2 uploadImageLabel">
+                                                <label for="files" class="btn btn-default btn-sm center-block btn-file upload uploadPhoto">
+                                                    <i class="fas fa-camera fa-3x" aria-hidden="true"></i>
+                                                    <br><span>Add Pictures</span>
+                                                </label>
+
+                                            </div>
+                                            <div id="nkar">
+                                                <div class="lodr" style="display: none">
+                                                    <div class="content">
+                                                        <img src="{{asset('site/img/loader.gif')}}" alt="" class="image img-responsive">
+                                                    </div>
+                                                </div>
+                                                <?php $i=0;?>
+                                                @foreach($product->gallery as $key=>$img)
+                                                    <div id="img_gallery">
+                                                        <input type="hidden" value="{{$img['file']}}" id="img">
+                                                        <img  src="{{asset('storage/product/medium/'.$img['file'])}}"class="img-responsive" style="margin-left: 10px">
+                                                        <div class="imgDelete"> <i class="fas fa-times fa-2x"></i></div>
+                                                    </div>
+                                                    <?php $i++;?>
+                                                @endforeach
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
 

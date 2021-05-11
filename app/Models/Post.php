@@ -110,6 +110,7 @@ class Post extends Model
             $posts->video =  $request['video']?$request['video']:"";
 
             $posts->save();
+            Gallery::storeGallery($request, $posts->id);
 //            Translate::storeTranslate($request, $posts->id);
         });
         return $posts;

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ImageController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\SubMenuController;
@@ -48,6 +49,9 @@ Route::prefix('my_admin')->middleware('auth')->group(function () {
 
 });
 
+Route::get('upload', [ImageController::class,'index']);
+Route::get('removeimg/', [ImageController::class,'removeimg']);
+Route::get('uploadimg', [ImageController::class,'uploadimg']);
 
 Route::group(['prefix' => '{locale}', 'middleware' => 'lang', 'as'=> 'site'], function () {
 
